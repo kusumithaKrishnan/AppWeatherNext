@@ -1,16 +1,9 @@
 import Head from 'next/head'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-
-import {store, persistor} from '../store'
-
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
-    <Provider store = {store}>
-      <PersistGate persistor={persistor}>
-<div className={styles.container}>
+    <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -19,8 +12,8 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
-          
-          <p className = "text-red-700">Learn More..</p>
+
+          <p className="text-red-700">Learn More..</p>
         </h1>
 
         <p className={styles.description}>
@@ -70,8 +63,5 @@ export default function Home() {
         </a>
       </footer>
     </div>
-    </PersistGate>
-    </Provider>
-    
   )
 }

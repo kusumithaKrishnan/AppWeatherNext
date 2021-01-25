@@ -1,10 +1,6 @@
 import {ActionTypes} from '../store/actions/actions'
 import { useDispatch } from 'react-redux'
 
-import WithProvider from '../src/HOC/withProvider'
-
-
-
 const Home = () => {
     const dispatch = useDispatch()
     return (
@@ -14,4 +10,4 @@ const Home = () => {
     )
 }
 
-export default WithProvider(Home)
+export default Home
