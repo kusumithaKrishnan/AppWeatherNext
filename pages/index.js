@@ -1,67 +1,58 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({techStackUsed}) {
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-
-          <p className="text-red-700">Learn More..</p>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <div className="bg-gray-200 h-full flex flex-col items-center justify-center">
+        <h2 className="text-5xl">Welcome to Next.js</h2>
+        <div className="bg-white max-w-md p-4 mt-4 rounded-lg shadow-lg">
+          <h3 className="text-blue-500 font-semibold text-lg capitalize">Tech stack</h3>
+          <p className="leading-tight mt-2">This is basic app with Next.js. We are using below technologies to prepare this demo</p>
+          <ul className="mt-4">
+            {techStackUsed.map((item, key) => (
+              <li key={item.name} className={`bg-blue-500 inline-block px-2 rounded text-white mr-2 mb-2`}>
+                <a href={item.url} target="_blank">{item.name}</a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      </div>
     </div>
   )
 }
+
+export const getStaticProps = () => ({
+  props: {
+    techStackUsed: [
+      {
+        name: 'Next.js',
+        url: 'https://nextjs.org/',
+      },
+      {
+        name: 'TailwindCss',
+        url: 'https://tailwindcss.com/',
+      },
+      {
+        name: 'React.js',
+        url: 'https://reactjs.org/',
+      },
+      {
+        name: "React-Hook-Form",
+        url: 'https://react-hook-form.com/'
+      },
+      {
+        name: "Axios",
+        url: 'https://github.com/axios/axios'
+      },
+      {
+        name: "next-redux-wrapper",
+        url: 'https://github.com/kirill-konshin/next-redux-wrapper'
+      }
+  ]
+  }
+})
