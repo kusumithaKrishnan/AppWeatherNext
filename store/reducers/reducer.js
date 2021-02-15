@@ -1,4 +1,5 @@
 import { ActionTypes } from '../actions/actions'
+import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
     counter: 0
@@ -6,6 +7,12 @@ const initialState = {
 
 const HomeReducer = (state = initialState, { type, payload }) => {
     switch(type) {
+        case HYDRATE:
+            return {
+                ...state,
+                ...payload
+            };
+
         case ActionTypes.ADD:
             return {
                 ...state,

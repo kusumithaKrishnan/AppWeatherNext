@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import { wrapper } from '../store'
 import styles from '../styles/Home.module.css'
 
-export default function Home({techStackUsed}) {
+export default function Home({ techStackUsed }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -26,7 +27,7 @@ export default function Home({techStackUsed}) {
   )
 }
 
-export const getStaticProps = () => ({
+export const getServerSideProps = wrapper.getServerSideProps({
   props: {
     techStackUsed: [
       {
@@ -53,6 +54,7 @@ export const getStaticProps = () => ({
         name: "next-redux-wrapper",
         url: 'https://github.com/kirill-konshin/next-redux-wrapper'
       }
-  ]
+    ]
   }
-})
+}
+)
